@@ -25,7 +25,6 @@ public class App {
     public void startup(@Observes ContainerInitialized event) throws Exception {
         System.out.println(demo.sayHello());
         System.out.println(valami.hello());
-        System.out.println("Halihóóóó!");
 
         String name = "valaki";
         BDUser bdUser = new BDUser();

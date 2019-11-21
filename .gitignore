@@ -9,8 +9,6 @@ target/
 *.iml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-derby.log
-valami*
 
 # Package Files #
 *.war
