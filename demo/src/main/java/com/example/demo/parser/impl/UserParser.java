@@ -14,7 +14,7 @@ public class UserParser extends JsonParser<BDUser> /*implements Parser<BDUser>*/
     }
 }
 
-//@Component
+//@ApplicationScoped
 //public class UserParser extends XmlParser<BDUser> /*implements Parser<BDUser>*/ {
 //
 //}

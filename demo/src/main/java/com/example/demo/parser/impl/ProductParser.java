@@ -14,7 +14,7 @@ public class ProductParser extends JsonParser<BDProduct> /*implements Parser<BDP
     }
 }
 
-//@Component
+//@ApplicationScoped
 //public class ProductParser extends XmlParser<BDProduct> /*implements Parser<BDProduct>*/ {
 //
 //}
