@@ -37,6 +37,13 @@ public class App {
         System.out.println("================*************=================");
         System.out.println(u);
 
+        parsManager.write2(bdUser, path);
+        u = parsManager.parseUser2(path);
+
+        System.out.println("================*************=================");
+        System.out.println("================*************=================");
+        System.out.println(u);
+
         BDProduct product = new BDProduct();
         product.setName("Valaki22");
         product.setEmail("valaki22@example.com");
