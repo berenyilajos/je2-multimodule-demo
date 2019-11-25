@@ -2,8 +2,15 @@ package com.example.jpademo.transactions;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.persistence.*;
+import javax.persistence.EntityGraph;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
+import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,10 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Sebastian Hennebrueder
+ * @author Berenyi Lajos
  */
-@ApplicationScoped
-public class EntityManagerDelegate implements EntityManager {
+//@ApplicationScoped
+public class EntityManagerDelegate /*implements EntityManager*/ {
 
     @Inject
     private EntityManagerStore entityManagerStore;

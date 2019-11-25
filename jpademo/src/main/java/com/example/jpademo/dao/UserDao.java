@@ -5,7 +5,6 @@ import com.example.jpademo.entity.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -43,7 +42,7 @@ public class UserDao {
     }
 
     public void save(User user) {
-//        System.out.println("Saving user : " + user);
+        System.out.println("Saving user : " + user);
 //        em.persist(user);
         userRepository.save(user);
     }

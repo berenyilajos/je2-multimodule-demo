@@ -1,6 +1,6 @@
 package com.example.jpademo.dao.repositories;
 
-import com.example.jpademo.entity.User;import org.apache.deltaspike.data.api.EntityManagerConfig;
+import com.example.jpademo.entity.User;
 import org.apache.deltaspike.data.api.EntityRepository;
 import org.apache.deltaspike.data.api.Repository;
 

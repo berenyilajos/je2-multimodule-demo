@@ -3,8 +3,8 @@ package com.example.demo.service;
 import com.example.demo.bd.BDUser;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
-import com.example.jpademo.transactions.Transactional;
-//import org.apache.deltaspike.jpa.api.transaction.Transactional;
+//import com.example.jpademo.transactions.Transactional;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

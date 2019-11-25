@@ -3,8 +3,9 @@ package com.example.demo.bd;
 import java.io.Serializable;
 
 public class BDProduct implements Serializable {
-
-    private String name;
+	
+	private static final long serialVersionUID = 1L;
+	private String name;
     private String email;
 
     public String getName() {

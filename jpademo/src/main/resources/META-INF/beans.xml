@@ -1,8 +1,8 @@
 <beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
-    <!-- Not needed with CDI 1.1+ and DeltaSpike v1.1.1+ -->
+    
     <interceptors>
         <class>com.example.jpademo.transactions.TransactionInterceptor</class>
-        <!--<class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>-->
+        <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
     </interceptors>
 </beans>
