@@ -4,6 +4,7 @@ import com.example.demo.Demo;
 import com.example.demo.bd.BDProduct;
 import com.example.demo.bd.BDUser;
 import com.example.demo.parser.manager.ParsManager;
+import com.example.demo.service.UserService;
 import com.example.valami.Valami;
 import org.jboss.weld.environment.se.events.ContainerInitialized;
 
@@ -13,6 +14,10 @@ import javax.inject.Inject;
 
 @ApplicationScoped
 public class App {
+
+    @Inject
+    private UserService userService;
+
     @Inject
     private Demo demo;
 
@@ -29,7 +34,15 @@ public class App {
         String name = "valaki";
         BDUser bdUser = new BDUser();
         bdUser.setName(name);
-        bdUser.setEmail(name + "@example.com");
+
+        for (int i = 0; i < 10; i++) {
+            bdUser.setEmail(name + i + "@example.com");
+            userService.addUser(bdUser);
+        }
+
+        System.out.println("Users: " + userService.getAllUsers());
+
+        System.out.println("Users with name: " + userService.getUserByName(name));
         String path = "valami";
         parsManager.write(bdUser, path);
         BDUser u = parsManager.parseUser(path);

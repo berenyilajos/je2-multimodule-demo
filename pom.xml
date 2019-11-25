@@ -12,6 +12,7 @@
     <modules>
         <module>demo</module>
         <module>consoledemo</module>
+        <module>jpademo</module>
     </modules>
 
 </project>
