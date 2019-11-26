@@ -28,18 +28,20 @@ public class BaseEntityDao<T> implements EntityDao<T> {
         return entityManager.createQuery(jpql, entityClass).getResultList();
     }
 
-    public void update(long id, Consumer<T>... updates) throws Exception {
-        T entity = find(id);
-        Arrays.stream(updates).forEach(up -> up.accept(entity));
+    public void update(T entity, Consumer<T> update) throws Exception {
+        update.accept(entity);
     }
 
-    public void save(T entity) {
+    public T save(T entity) {
         entityManager.persist(entity);
+        return entity;
     }
 
     public void remove(long id) {
         T entity = find(id);
-        entityManager.remove(entity);
+        if (entity != null) {
+            entityManager.remove(entity);
+        }
     }
 
 }

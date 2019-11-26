@@ -34,7 +34,7 @@ public class UserDao {
     }
 
     public List<User> findByName(String name) {
-        String queryText = "SELECT u from User u where name = :name";
+        String queryText = "SELECT u from User u where u.name = :name";
         TypedQuery<User> query = em.createQuery(queryText, User.class);
         query.setParameter("name", name);
         return query.getResultList();

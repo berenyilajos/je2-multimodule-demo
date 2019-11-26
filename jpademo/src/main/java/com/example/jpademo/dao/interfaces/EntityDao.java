@@ -9,9 +9,9 @@ public interface EntityDao<T> {
 
     List<T> findAll();
 
-    void update(long id, Consumer<T>... updates) throws Exception;
+    void update(T entity, Consumer<T> update) throws Exception;
 
-    void save(T entity);
+    T save(T entity);
 
     void remove(long id);
 

@@ -15,6 +15,7 @@ import javax.inject.Inject;
 //import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 @ApplicationScoped
 public class UserService {
@@ -42,10 +43,21 @@ public class UserService {
 
     @Transactional
     public void addUser(BDUser bdUser){
+        User user;
         if (new Random().nextBoolean()) {
-            userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
+            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
         } else {
-            userEntityDao.save(EntityHelper.bdToEntity(bdUser));
+            user = userEntityDao.save(EntityHelper.bdToEntity(bdUser));
+        }
+        try {
+            Consumer<User> cons = u -> {
+                String[] email = user.getEmail().split("@");
+                u.setName(email[0]);
+                u.setEmail(email[0] + "0" + "@" + email[1]);
+            };
+            userEntityDao.update(user, cons);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         System.err.println(EntityHelper.entityToBd(userDao.findAll()));
         System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));

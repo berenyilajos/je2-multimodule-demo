@@ -35,14 +35,16 @@ public class App {
         BDUser bdUser = new BDUser();
         bdUser.setName(name);
 
-        for (int i = 0; i < 10; i++) {
+        int i = 0;
+        for (; i < 10; i++) {
             bdUser.setEmail(name + i + "@example.com");
             userService.addUser(bdUser);
         }
 
         System.out.println("Users: " + userService.getAllUsers());
 
-        System.out.println("Users with name: " + userService.getUserByName(name));
+        name = bdUser.getName() + --i;
+        System.out.println("Users with name: " + name + " : " + userService.getUserByName(name));
         String path = "valami";
         parsManager.write(bdUser, path);
         BDUser u = parsManager.parseUser(path);
