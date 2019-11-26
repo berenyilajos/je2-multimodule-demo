@@ -4,6 +4,7 @@ import com.example.demo.bd.BDUser;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
 //import com.example.jpademo.transactions.Transactional;
+import com.example.jpademo.dao.repositories.UserRepositoryDao;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,9 +18,13 @@ public class UserService {
     @Inject
     private UserDao userDao;
 
+    @Inject
+    private UserRepositoryDao userRepositoryDao;
+
     @Transactional
     public List<BDUser> getAllUsers(){
-        return EntityHelper.entityToBd(userDao.findAll());
+//        return EntityHelper.entityToBd(userDao.findAll());
+        return EntityHelper.entityToBd(userRepositoryDao.getAll());
     }
 
     @Transactional
@@ -29,7 +34,12 @@ public class UserService {
 
     @Transactional
     public void addUser(BDUser bdUser){
-        userDao.save(EntityHelper.bdToEntity(bdUser));
+        userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
+        System.err.println(EntityHelper.entityToBd(userDao.findAll()));
+        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+        System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
+
     }
 
     @Transactional

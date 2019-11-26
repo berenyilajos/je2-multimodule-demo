@@ -12,8 +12,8 @@ import java.util.List;
 @ApplicationScoped
 public class UserDao {
 
-//    @Inject
-//    private EntityManager em;
+    @Inject
+    private EntityManager em;
 
     @Inject
     private UserRepository userRepository;
@@ -34,11 +34,11 @@ public class UserDao {
     }
 
     public List<User> findByName(String name) {
-//        String queryText = "SELECT u from User u where name = :name";
-//        TypedQuery<User> query = em.createQuery(queryText, User.class);
-//        query.setParameter("name", name);
-//        return query.getResultList();
-        return userRepository.findByName(name);
+        String queryText = "SELECT u from User u where name = :name";
+        TypedQuery<User> query = em.createQuery(queryText, User.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+//        return userRepository.findByName(name);
     }
 
     public void save(User user) {
