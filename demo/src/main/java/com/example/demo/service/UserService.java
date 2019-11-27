@@ -5,6 +5,7 @@ import com.example.demo.bd.BDUser;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
 //import com.example.jpademo.transactions.Transactional;
+import com.example.jpademo.dao.impl.ProductEntityDao;
 import com.example.jpademo.dao.impl.UserEntityDao;
 import com.example.jpademo.dao.interfaces.EntityDao;
 import com.example.jpademo.dao.repositories.UserRepositoryDao;
@@ -26,11 +27,10 @@ public class UserService {
     private UserDao userDao;
 
     @Inject
-//    private UserEntityDao userEntityDao;
-    private EntityDao<User> userEntityDao;
+    private UserEntityDao userEntityDao;
 
     @Inject
-    private EntityDao<Product> productEntityDao;
+    private ProductEntityDao productEntityDao;
 
     @Inject
     private UserRepositoryDao userRepositoryDao;
@@ -49,26 +49,26 @@ public class UserService {
     @Transactional
     public void addUser(BDUser bdUser){
         User user;
-//        if (new Random().nextBoolean()) {
-//            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
-//        } else {
+        if (new Random().nextBoolean()) {
+            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
+        } else {
             user = userEntityDao.save(EntityHelper.bdToEntity(bdUser));
-//        }
-//        try {
-//            Consumer<User> cons = u -> {
-//                String[] email = user.getEmail().split("@");
-//                u.setName(email[0]);
-//                u.setEmail(email[0] + "0" + "@" + email[1]);
-//            };
-//            userEntityDao.update(user, cons);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        System.err.println(EntityHelper.entityToBd(userDao.findAll()));
-//        System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));
-//        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
-//        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
-//        System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
+        }
+        try {
+            Consumer<User> cons = u -> {
+                String[] email = user.getEmail().split("@");
+                u.setName(email[0]);
+                u.setEmail(email[0] + "0" + "@" + email[1]);
+            };
+            userEntityDao.update(user, cons);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.err.println(EntityHelper.entityToBd(userDao.findAll()));
+        System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));
+        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+        System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
 
     }
 

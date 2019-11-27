@@ -16,7 +16,7 @@ public class Product {
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "email")
+    @Column(name = "price")
     private BigDecimal price;
     public Product(){}
     public long getId() {
@@ -40,7 +40,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +

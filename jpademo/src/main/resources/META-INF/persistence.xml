@@ -4,6 +4,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>com.example.jpademo.entity.User</class>
+        <class>com.example.jpademo.entity.Product</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <!-- optimalizacio - @Cacheable annotacio ignaralasa (nem hasznaljuk) -->
@@ -28,26 +29,4 @@
 		    
         </properties>
 	</persistence-unit>
-    <persistence-unit name="demo2" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <class>com.example.jpademo.entity.Product</class>
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
-
-        <!-- optimalizacio - @Cacheable annotacio ignaralasa (nem hasznaljuk) -->
-        <shared-cache-mode>NONE</shared-cache-mode>
-        <!-- optimalizacio - Hibernate Validator kikapcsolasa (nem hasznaljuk) -->
-        <validation-mode>NONE</validation-mode>
-
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby:derby2;create=true" />
-            <property name="javax.persistence.jdbc.user" value="" />
-            <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="format_sql" value="true" />
-            <property name="hibernate.connection.charSet" value="UTF-8" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
-        </properties>
-    </persistence-unit>
 </persistence>

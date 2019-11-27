@@ -61,7 +61,7 @@ public class App {
         System.out.println(u);
 
         BDProduct product = new BDProduct();
-        product.setName("Valaki22");
+        product.setName("Valami22");
         product.setPrice(BigDecimal.valueOf(1000));
         String path2 = "valami2";
         parsManager.write(product, path2);
