@@ -11,6 +11,7 @@ import org.jboss.weld.environment.se.events.ContainerInitialized;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import java.math.BigDecimal;
 
 @ApplicationScoped
 public class App {
@@ -61,13 +62,23 @@ public class App {
 
         BDProduct product = new BDProduct();
         product.setName("Valaki22");
-        product.setEmail("valaki22@example.com");
+        product.setPrice(BigDecimal.valueOf(1000));
         String path2 = "valami2";
         parsManager.write(product, path2);
         BDProduct p = parsManager.parseProduct(path2);
 
         System.out.println("================*************=================");
         System.out.println(p);
+
+        System.out.println("================*************=================");
+        System.out.println("================*************=================");
+        System.out.println("================*************=================");
+
+        for (int j = 1; j < 7; j++) {
+            product.setPrice(product.getPrice().add(BigDecimal.valueOf(j)));
+            userService.addProduct(product);
+        }
+        System.out.println(userService.getAllProducts());
     }
 
 }

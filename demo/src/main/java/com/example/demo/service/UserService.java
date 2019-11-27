@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.bd.BDProduct;
 import com.example.demo.bd.BDUser;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
@@ -7,6 +8,7 @@ import com.example.demo.helper.EntityHelper;
 import com.example.jpademo.dao.impl.UserEntityDao;
 import com.example.jpademo.dao.interfaces.EntityDao;
 import com.example.jpademo.dao.repositories.UserRepositoryDao;
+import com.example.jpademo.entity.Product;
 import com.example.jpademo.entity.User;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
@@ -28,6 +30,9 @@ public class UserService {
     private EntityDao<User> userEntityDao;
 
     @Inject
+    private EntityDao<Product> productEntityDao;
+
+    @Inject
     private UserRepositoryDao userRepositoryDao;
 
     @Transactional
@@ -44,31 +49,41 @@ public class UserService {
     @Transactional
     public void addUser(BDUser bdUser){
         User user;
-        if (new Random().nextBoolean()) {
-            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
-        } else {
+//        if (new Random().nextBoolean()) {
+//            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
+//        } else {
             user = userEntityDao.save(EntityHelper.bdToEntity(bdUser));
-        }
-        try {
-            Consumer<User> cons = u -> {
-                String[] email = user.getEmail().split("@");
-                u.setName(email[0]);
-                u.setEmail(email[0] + "0" + "@" + email[1]);
-            };
-            userEntityDao.update(user, cons);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.err.println(EntityHelper.entityToBd(userDao.findAll()));
-        System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));
-        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
-        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
-        System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
+//        }
+//        try {
+//            Consumer<User> cons = u -> {
+//                String[] email = user.getEmail().split("@");
+//                u.setName(email[0]);
+//                u.setEmail(email[0] + "0" + "@" + email[1]);
+//            };
+//            userEntityDao.update(user, cons);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.err.println(EntityHelper.entityToBd(userDao.findAll()));
+//        System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));
+//        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+//        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+//        System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
 
     }
 
     @Transactional
     public List<BDUser> getUserByName(String name) {
         return EntityHelper.entityToBd(userDao.findByName(name));
+    }
+
+    @Transactional
+    public void addProduct(BDProduct bdProduct) {
+        productEntityDao.save(EntityHelper.bdToEntity(bdProduct));
+    }
+
+    @Transactional
+    public List<BDProduct> getAllProducts() {
+        return EntityHelper.entityToBdProducts(productEntityDao.findAll());
     }
 }

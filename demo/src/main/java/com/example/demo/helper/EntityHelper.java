@@ -1,7 +1,9 @@
 package com.example.demo.helper;
 
 
+import com.example.demo.bd.BDProduct;
 import com.example.demo.bd.BDUser;
+import com.example.jpademo.entity.Product;
 import com.example.jpademo.entity.User;
 
 import java.util.ArrayList;
@@ -20,6 +22,17 @@ public class EntityHelper {
         bdUser.setEmail(user.getEmail());
 
         return bdUser;
+    }
+
+    public static BDProduct entityToBd(Product product) {
+        if (product == null) {
+            return null;
+        }
+        BDProduct bdProduct = new BDProduct();
+        bdProduct.setName(product.getName());
+        bdProduct.setPrice(product.getPrice());
+
+        return bdProduct;
     }
 
     public static Optional<BDUser> entityToBd(Optional<User> userOptional) {
@@ -41,6 +54,13 @@ public class EntityHelper {
         return bdUsers;
     }
 
+    public static List<BDProduct> entityToBdProducts(Iterable<Product> products) {
+        List<BDProduct> bdProducts = new ArrayList<>();
+        products.forEach(product -> bdProducts.add(entityToBd(product)));
+
+        return bdProducts;
+    }
+
     public static User bdToEntity(BDUser bdUser) {
         if (bdUser == null) {
             return null;
@@ -52,8 +72,23 @@ public class EntityHelper {
         return user;
     }
 
+    public static Product bdToEntity(BDProduct bdProduct) {
+        if (bdProduct == null) {
+            return null;
+        }
+        Product product = new Product();
+        product.setName(bdProduct.getName());
+        product.setPrice(bdProduct.getPrice());
+
+        return product;
+    }
+
     public static List<User> bdToEntity(List<BDUser> bdUsers) {
         return bdUsers.stream().map(EntityHelper::bdToEntity).collect(Collectors.toList());
+    }
+
+    public static List<Product> bdToEntityProducts(List<BDProduct> bdProducts) {
+        return bdProducts.stream().map(EntityHelper::bdToEntity).collect(Collectors.toList());
     }
 
 }

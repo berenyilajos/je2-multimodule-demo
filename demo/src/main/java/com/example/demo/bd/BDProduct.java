@@ -1,12 +1,13 @@
 package com.example.demo.bd;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class BDProduct implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String name;
-    private String email;
+    private BigDecimal price;
 
     public String getName() {
         return name;
@@ -14,18 +15,18 @@ public class BDProduct implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getEmail() {
-        return email;
+    public BigDecimal getPrice() {
+        return price;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "BDProduct{" +
                 "name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

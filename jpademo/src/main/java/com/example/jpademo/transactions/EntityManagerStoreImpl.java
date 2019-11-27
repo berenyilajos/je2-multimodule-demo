@@ -32,7 +32,7 @@ public class EntityManagerStoreImpl implements EntityManagerStore {
     }
 
     private void init() {
-        emf = Persistence.createEntityManagerFactory("memorygame");
+        emf = Persistence.createEntityManagerFactory("demo1");
         logger.info("EMF created!!!!!!!!!!!!!!!!!!");
     }
 
