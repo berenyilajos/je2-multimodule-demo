@@ -1,8 +1,8 @@
 package com.example.demo.parser.manager;
 
-import com.example.demo.bd.BDProduct;
-import com.example.demo.bd.BDUser;
-import com.example.demo.parser.interfaces.Parser;
+import com.example.common.bd.BDProduct;
+import com.example.common.bd.BDUser;
+import com.example.common.parser.interfaces.Parser;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

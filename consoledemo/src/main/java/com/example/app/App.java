@@ -1,9 +1,10 @@
 package com.example.app;
 
 import com.example.demo.Demo;
-import com.example.demo.bd.BDProduct;
-import com.example.demo.bd.BDUser;
+import com.example.common.bd.BDProduct;
+import com.example.common.bd.BDUser;
 import com.example.demo.parser.manager.ParsManager;
+import com.example.demo.service.ProductService;
 import com.example.demo.service.UserService;
 import com.example.valami.Valami;
 import org.jboss.weld.environment.se.events.ContainerInitialized;
@@ -18,6 +19,9 @@ public class App {
 
     @Inject
     private UserService userService;
+
+    @Inject
+    private ProductService productService;
 
     @Inject
     private Demo demo;
@@ -76,9 +80,9 @@ public class App {
 
         for (int j = 1; j < 7; j++) {
             product.setPrice(product.getPrice().add(BigDecimal.valueOf(j)));
-            userService.addProduct(product);
+            productService.addProduct(product);
         }
-        System.out.println(userService.getAllProducts());
+        System.out.println(productService.getAllProducts());
     }
 
 }

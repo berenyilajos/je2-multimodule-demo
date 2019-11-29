@@ -2,7 +2,6 @@
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
     
     <interceptors>
-        <class>com.example.jpademo.transactions.TransactionInterceptor</class>
         <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
     </interceptors>
 </beans>

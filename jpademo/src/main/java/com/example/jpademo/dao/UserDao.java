@@ -1,7 +1,9 @@
 package com.example.jpademo.dao;
 
-import com.example.jpademo.dao.repositories.UserRepository;
+import com.example.common.dao.db.DemoDatabase;
+//import com.example.jpademo.dao.repositories.UserRepository;
 import com.example.jpademo.entity.User;
+import com.example.jpademo.repositories.UserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,6 +15,7 @@ import java.util.List;
 public class UserDao {
 
     @Inject
+    @DemoDatabase
     private EntityManager em;
 
     @Inject
@@ -26,11 +29,11 @@ public class UserDao {
     }
 
     public User findOneById(long id) {
-//        String queryText = "SELECT u from User u where id = :id";
-//        TypedQuery<User> query = em.createQuery(queryText, User.class);
-//        query.setParameter("id", id);
-//        return query.getSingleResult();
-        return userRepository.findOneById(id);
+        String queryText = "SELECT u from User u where id = :id";
+        TypedQuery<User> query = em.createQuery(queryText, User.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+//        return userRepository.findOneById(id);
     }
 
     public List<User> findByName(String name) {
@@ -43,7 +46,7 @@ public class UserDao {
 
     public void save(User user) {
         System.out.println("Saving user : " + user);
-//        em.persist(user);
-        userRepository.save(user);
+        em.persist(user);
+//        userRepository.save(user);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.jpademo.dao.impl;
 
-import com.example.jpademo.dao.base.BaseEntityDao;
+import com.example.common.dao.base.BaseEntityDao;
+import com.example.common.dao.db.DemoDatabase;
 import com.example.jpademo.entity.User;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,7 +12,7 @@ import javax.persistence.EntityManager;
 public class UserEntityDao extends BaseEntityDao<User> {
 
     @Inject
-    public UserEntityDao(EntityManager entityManager) {
+    public UserEntityDao(@DemoDatabase EntityManager entityManager) {
         super(entityManager, User.class);
     }
 }

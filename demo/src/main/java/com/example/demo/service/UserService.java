@@ -1,21 +1,16 @@
 package com.example.demo.service;
 
-import com.example.demo.bd.BDProduct;
-import com.example.demo.bd.BDUser;
+import com.example.common.bd.BDUser;
+import com.example.common.dao.db.DemoDatabase;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
-//import com.example.jpademo.transactions.Transactional;
-import com.example.jpademo.dao.impl.ProductEntityDao;
 import com.example.jpademo.dao.impl.UserEntityDao;
-import com.example.jpademo.dao.interfaces.EntityDao;
 import com.example.jpademo.dao.repositories.UserRepositoryDao;
-import com.example.jpademo.entity.Product;
 import com.example.jpademo.entity.User;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-//import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -30,23 +25,20 @@ public class UserService {
     private UserEntityDao userEntityDao;
 
     @Inject
-    private ProductEntityDao productEntityDao;
-
-    @Inject
     private UserRepositoryDao userRepositoryDao;
 
-    @Transactional
+    @Transactional(qualifier = DemoDatabase.class)
     public List<BDUser> getAllUsers(){
-//        return EntityHelper.entityToBd(userDao.findAll());
-        return EntityHelper.entityToBd(userRepositoryDao.getAll());
+        return EntityHelper.entityToBd(userDao.findAll());
+//        return EntityHelper.entityToBd(userRepositoryDao.getAll());
     }
 
-    @Transactional
+    @Transactional(qualifier = DemoDatabase.class)
     public BDUser getUser(long id){
         return EntityHelper.entityToBd(userDao.findOneById(id));
     }
 
-    @Transactional
+    @Transactional(qualifier = DemoDatabase.class)
     public void addUser(BDUser bdUser){
         User user;
         if (new Random().nextBoolean()) {
@@ -72,18 +64,9 @@ public class UserService {
 
     }
 
-    @Transactional
+    @Transactional(qualifier = DemoDatabase.class)
     public List<BDUser> getUserByName(String name) {
         return EntityHelper.entityToBd(userDao.findByName(name));
     }
 
-    @Transactional
-    public void addProduct(BDProduct bdProduct) {
-        productEntityDao.save(EntityHelper.bdToEntity(bdProduct));
-    }
-
-    @Transactional
-    public List<BDProduct> getAllProducts() {
-        return EntityHelper.entityToBdProducts(productEntityDao.findAll());
-    }
 }

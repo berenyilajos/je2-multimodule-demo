@@ -1,6 +1,6 @@
-package com.example.jpademo.transactions;
+package com.example.jpademo2.transactions;
 
-import com.example.common.dao.db.DemoDatabase;
+import com.example.common.dao.db.Demo2Database;
 import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -9,7 +9,6 @@ import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import javax.persistence.PersistenceUnit;
 
 @ApplicationScoped
@@ -20,29 +19,29 @@ public class EntityManagerProducer {
     private static int cl = 0;
     private int close = 0;
     private int close2 = 0;
-  @PersistenceUnit(unitName="demo")
+  @PersistenceUnit(unitName="demo2")
   private EntityManagerFactory emf;
 
   @Produces
-  @DemoDatabase
+  @Demo2Database
   @TransactionScoped
   public EntityManager createEntityManager() {
       i++; count++;
-      System.err.println("demo: i = " + i + ", count = " + count);
+      System.err.println("demo2: i = " + i + ", count = " + count);
       if (emf == null) {
-          System.err.println("EMF for demo was not not injected, so created!!!");
-          emf = Persistence.createEntityManagerFactory("demo");
+          System.err.println("EMF for demo2 was not not injected, so created!!!");
+          emf = Persistence.createEntityManagerFactory("demo2");
 	  }
 	  return emf.createEntityManager();
   }
 
     public void close(
-            @Disposes @DemoDatabase EntityManager entityManager) {
+            @Disposes @Demo2Database EntityManager entityManager) {
       cl++; close++;
       if (entityManager.isOpen()) {
           close2++;
           entityManager.close();
       }
-        System.err.println("demo: cl = " + cl + ", close = " + close + ", close2 = " + close2);
+        System.err.println("demo2: cl = " + cl + ", close = " + close + ", close2 = " + close2);
     }
 }

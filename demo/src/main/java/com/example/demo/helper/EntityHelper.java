@@ -1,9 +1,9 @@
 package com.example.demo.helper;
 
 
-import com.example.demo.bd.BDProduct;
-import com.example.demo.bd.BDUser;
-import com.example.jpademo.entity.Product;
+import com.example.common.bd.BDProduct;
+import com.example.common.bd.BDUser;
+import com.example.jpademo2.entity.Product;
 import com.example.jpademo.entity.User;
 
 import java.util.ArrayList;
