@@ -43,4 +43,12 @@ public class BaseEntityDao<T extends Entity> implements EntityDao<T> {
         }
     }
 
+    public void remove(T entity) {
+        entityManager.remove(entity);
+    }
+
+    protected EntityManager getEntityManager() {
+        return entityManager;
+    }
+
 }

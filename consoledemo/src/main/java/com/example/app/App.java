@@ -49,7 +49,7 @@ public class App {
         System.out.println("Users: " + userService.getAllUsers());
 
         name = bdUser.getName() + --i;
-        System.out.println("Users with name: " + name + " : " + userService.getUserByName(name));
+        System.out.println("Users with name: " + name + " : " + userService.getUsersByName(name));
         String path = "valami";
         parsManager.write(bdUser, path);
         BDUser u = parsManager.parseUser(path);

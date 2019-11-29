@@ -65,8 +65,9 @@ public class UserService {
     }
 
     @Transactional(qualifier = DemoDatabase.class)
-    public List<BDUser> getUserByName(String name) {
-        return EntityHelper.entityToBd(userDao.findByName(name));
+    public List<BDUser> getUsersByName(String name) {
+//        return EntityHelper.entityToBd(userDao.findByName(name));
+        return EntityHelper.entityToBd(userEntityDao.getUsersByName(name));
     }
 
 }

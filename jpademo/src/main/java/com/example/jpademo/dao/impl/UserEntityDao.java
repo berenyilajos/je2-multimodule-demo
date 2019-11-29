@@ -7,6 +7,8 @@ import com.example.jpademo.entity.User;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @ApplicationScoped
 public class UserEntityDao extends BaseEntityDao<User> {
@@ -14,5 +16,13 @@ public class UserEntityDao extends BaseEntityDao<User> {
     @Inject
     public UserEntityDao(@DemoDatabase EntityManager entityManager) {
         super(entityManager, User.class);
+    }
+
+    public List<User> getUsersByName(String name) {
+        String queryText = "SELECT u FROM User u WHERE u.name = :name";
+        TypedQuery<User> query = getEntityManager().createQuery(queryText, User.class);
+        query.setParameter("name", name);
+
+        return query.getResultList();
     }
 }

@@ -17,4 +17,6 @@ public interface EntityDao<T extends Entity> {
 
     void remove(long id);
 
+    void remove(T entity);
+
 }
