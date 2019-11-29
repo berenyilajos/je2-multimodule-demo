@@ -1,6 +1,6 @@
 package com.example.jpademo.dao;
 
-import com.example.common.dao.db.DemoDatabase;
+import com.example.jpademo.dao.qualifier.DemoDatabase;
 //import com.example.jpademo.dao.repositories.UserRepository;
 import com.example.jpademo.entity.User;
 import com.example.jpademo.repositories.UserRepository;

@@ -1,9 +1,11 @@
 package com.example.common.dao.interfaces;
 
+import com.example.common.entity.Entity;
+
 import java.util.List;
 import java.util.function.Consumer;
 
-public interface EntityDao<T> {
+public interface EntityDao<T extends Entity> {
 
     T find(long id);
 

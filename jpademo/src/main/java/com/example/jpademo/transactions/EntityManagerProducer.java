@@ -1,6 +1,6 @@
 package com.example.jpademo.transactions;
 
-import com.example.common.dao.db.DemoDatabase;
+import com.example.jpademo.dao.qualifier.DemoDatabase;
 import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,21 +20,21 @@ public class EntityManagerProducer {
     private static int cl = 0;
     private int close = 0;
     private int close2 = 0;
-  @PersistenceUnit(unitName="demo")
-  private EntityManagerFactory emf;
+    @PersistenceUnit(unitName="demo")
+    private EntityManagerFactory emf;
 
-  @Produces
-  @DemoDatabase
-  @TransactionScoped
-  public EntityManager createEntityManager() {
-      i++; count++;
-      System.err.println("demo: i = " + i + ", count = " + count);
-      if (emf == null) {
-          System.err.println("EMF for demo was not not injected, so created!!!");
-          emf = Persistence.createEntityManagerFactory("demo");
-	  }
-	  return emf.createEntityManager();
-  }
+    @Produces
+    @DemoDatabase
+    @TransactionScoped
+    public EntityManager createEntityManager() {
+        i++; count++;
+        System.err.println("demo: i = " + i + ", count = " + count);
+        if (emf == null) {
+            System.err.println("EMF for demo was not not injected, so creating!!!");
+            emf = Persistence.createEntityManagerFactory("demo");
+	    }
+	    return emf.createEntityManager();
+    }
 
     public void close(
             @Disposes @DemoDatabase EntityManager entityManager) {

@@ -1,7 +1,7 @@
 package com.example.jpademo2.dao.impl;
 
 import com.example.common.dao.base.BaseEntityDao;
-import com.example.common.dao.db.Demo2Database;
+import com.example.jpademo2.dao.qualifier.Demo2Database;
 import com.example.jpademo2.entity.Product;
 
 import javax.enterprise.context.ApplicationScoped;

@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.common.bd.BDUser;
-import com.example.common.dao.db.DemoDatabase;
+import com.example.jpademo.dao.qualifier.DemoDatabase;
 import com.example.jpademo.dao.UserDao;
 import com.example.demo.helper.EntityHelper;
 import com.example.jpademo.dao.impl.UserEntityDao;

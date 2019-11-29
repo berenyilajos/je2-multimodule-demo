@@ -1,4 +1,4 @@
-package com.example.common.dao.db;
+package com.example.jpademo2.dao.qualifier;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.ElementType;
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD,
         ElementType.TYPE, ElementType.PARAMETER})
-public @interface DemoDatabase {
+public @interface Demo2Database {
 }

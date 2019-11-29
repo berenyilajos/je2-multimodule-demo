@@ -1,12 +1,13 @@
 package com.example.common.dao.base;
 
 import com.example.common.dao.interfaces.EntityDao;
+import com.example.common.entity.Entity;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class BaseEntityDao<T> implements EntityDao<T> {
+public class BaseEntityDao<T extends Entity> implements EntityDao<T> {
 
     private EntityManager entityManager;
     private Class<T> entityClass;
