@@ -83,6 +83,15 @@ public class App {
             productService.addProduct(product);
         }
         System.out.println(productService.getAllProducts());
+
+        System.out.println("================*************=================");
+        System.out.println(productService.getProductsCheaperThen(BigDecimal.valueOf(1020)));
+
+        System.out.println("================*************=================");
+        System.out.println(productService.getProductsByName("valami22"));
+
+        System.out.println("================*************=================");
+        System.out.println(productService.getProductsByName("Valami22"));
     }
 
 }
