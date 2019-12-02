@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class BaseEntityDao<T extends Entity> implements EntityDao<T> {
+public abstract class BaseEntityDao<T extends Entity> implements EntityDao<T> {
 
     private EntityManager entityManager;
     private Class<T> entityClass;
