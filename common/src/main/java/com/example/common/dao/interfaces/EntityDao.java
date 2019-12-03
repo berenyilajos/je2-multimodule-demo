@@ -5,9 +5,9 @@ import com.example.common.entity.Entity;
 import java.util.List;
 import java.util.function.Consumer;
 
-public interface EntityDao<T extends Entity> {
+public interface EntityDao<T, ID> {
 
-    T find(long id);
+    T find(ID id);
 
     List<T> findAll();
 
@@ -15,7 +15,7 @@ public interface EntityDao<T extends Entity> {
 
     T save(T entity);
 
-    void remove(long id);
+    void removeById(ID id);
 
     void remove(T entity);
 

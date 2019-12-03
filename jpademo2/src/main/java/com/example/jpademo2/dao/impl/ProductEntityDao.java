@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 @ApplicationScoped
-public class ProductEntityDao extends BaseEntityDao<Product> {
+public class ProductEntityDao extends BaseEntityDao<Product, Long> {
 
     @Inject
     public ProductEntityDao(@Demo2Database EntityManager entityManager) {

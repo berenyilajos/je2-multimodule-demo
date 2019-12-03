@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class BaseEntityDao<T extends Entity> implements EntityDao<T> {
+public abstract class BaseEntityDao<T, ID> implements EntityDao<T, ID> {
 
     private EntityManager entityManager;
     private Class<T> entityClass;
@@ -19,7 +19,7 @@ public abstract class BaseEntityDao<T extends Entity> implements EntityDao<T> {
         this.entityClass = entityClass;
     }
 
-    public T find(long id) {
+    public T find(ID id) {
         return entityManager.find(entityClass, id);
     }
 
@@ -36,7 +36,7 @@ public abstract class BaseEntityDao<T extends Entity> implements EntityDao<T> {
         return entityManager.merge(entity);
     }
 
-    public void remove(long id) {
+    public void removeById(ID id) {
         T entity = find(id);
         if (entity != null) {
             entityManager.remove(entity);

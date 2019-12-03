@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @ApplicationScoped
-public class UserEntityDao extends BaseEntityDao<User> {
+public class UserEntityDao extends BaseEntityDao<User, Long> {
 
     @Inject
     public UserEntityDao(@DemoDatabase EntityManager entityManager) {
