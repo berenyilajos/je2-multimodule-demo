@@ -2,8 +2,6 @@ package com.example.jpademo2.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 

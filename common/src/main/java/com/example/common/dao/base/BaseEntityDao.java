@@ -1,7 +1,6 @@
 package com.example.common.dao.base;
 
 import com.example.common.dao.interfaces.EntityDao;
-import com.example.common.entity.Entity;
 
 import javax.persistence.EntityManager;
 import java.util.List;

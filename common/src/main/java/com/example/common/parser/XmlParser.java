@@ -20,7 +20,8 @@ public abstract class XmlParser<T> implements Parser<T> {
         writeXml(obj, output);
     }
 
-    private static <T> T parseXml(InputStream in) throws Exception {
+    @SuppressWarnings("unchecked")
+	private static <T> T parseXml(InputStream in) throws Exception {
         return (T)xStream.fromXML(in);
     }
 

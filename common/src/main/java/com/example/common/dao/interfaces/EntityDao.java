@@ -1,7 +1,5 @@
 package com.example.common.dao.interfaces;
 
-import com.example.common.entity.Entity;
-
 import java.util.List;
 import java.util.function.Consumer;
 

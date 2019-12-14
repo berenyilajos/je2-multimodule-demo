@@ -1,3 +1,10 @@
+*derby.log
+*valami.json
+*valami.xml
+*valami2.json
+*valami2.xml
+derby1/
+derby2/
 log/
 target/
 .settings/
