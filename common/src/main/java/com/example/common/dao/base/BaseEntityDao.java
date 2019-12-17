@@ -1,12 +1,10 @@
 package com.example.common.dao.base;
 
-import com.example.common.dao.interfaces.EntityDao;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class BaseEntityDao<T, ID> implements EntityDao<T, ID> {
+public abstract class BaseEntityDao<T, ID> {
 
     private EntityManager entityManager;
     private Class<T> entityClass;
