@@ -1,28 +1,22 @@
 package com.example.jpademo.dao.repositories;
 
-import com.example.jpademo.dao.qualifier.DemoDatabase;
 import com.example.jpademo.entity.User;
 import com.example.jpademo.transactions.DemoEntityManagerResolver;
 import org.apache.deltaspike.data.api.EntityManagerConfig;
-import org.apache.deltaspike.data.api.EntityRepository;
+import org.apache.deltaspike.data.api.AbstractEntityRepository;
 import org.apache.deltaspike.data.api.Repository;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository(forEntity = User.class)
 @EntityManagerConfig(entityManagerResolver = DemoEntityManagerResolver.class)
-public abstract class UserRepositoryDao implements EntityRepository<User, Long> {
-
-    @Inject
-    @DemoDatabase
-    private EntityManager em;
+public abstract class UserRepositoryDao extends AbstractEntityRepository<User, Long> {
 
     public List<User> getAll() {
         String queryText = "SELECT u from User u";
-        TypedQuery<User> query = em.createQuery(queryText, User.class);
+//        TypedQuery<User> query = entityManager().createQuery(queryText, User.class);
+        TypedQuery<User> query = typedQuery(queryText);
         return query.getResultList();
     }
 
