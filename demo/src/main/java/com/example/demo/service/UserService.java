@@ -58,7 +58,7 @@ public class UserService {
         }
         System.err.println(EntityHelper.entityToBd(userDao.findAll()));
         System.err.println(EntityHelper.entityToBd(userEntityDao.findAll()));
-        System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
+        System.err.println(EntityHelper.entityToBd(userRepositoryDao.findAll()));
         System.err.println(EntityHelper.entityToBd(userRepositoryDao.getAll()));
         System.err.println(EntityHelper.entityToBd(userDao.findByName(bdUser.getName())));
 
