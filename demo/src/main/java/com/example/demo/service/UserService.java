@@ -7,6 +7,7 @@ import com.example.demo.helper.EntityHelper;
 import com.example.jpademo.dao.impl.UserEntityDao;
 import com.example.jpademo.dao.repositories.UserRepositoryDao;
 import com.example.jpademo.entity.User;
+import org.apache.deltaspike.jpa.api.entitymanager.EntityManagerConfig;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -27,18 +28,21 @@ public class UserService {
     @Inject
     private UserRepositoryDao userRepositoryDao;
 
-    @Transactional(qualifier = DemoDatabase.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = DemoDatabase.class)
     public List<BDUser> getAllUsers(){
         return EntityHelper.entityToBd(userDao.findAll());
 //        return EntityHelper.entityToBd(userRepositoryDao.getAll());
     }
 
-    @Transactional(qualifier = DemoDatabase.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = DemoDatabase.class)
     public BDUser getUser(long id){
         return EntityHelper.entityToBd(userDao.findOneById(id));
     }
 
-    @Transactional(qualifier = DemoDatabase.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = DemoDatabase.class)
     public void addUser(BDUser bdUser){
         User user;
         if (new Random().nextBoolean()) {
@@ -64,7 +68,8 @@ public class UserService {
 
     }
 
-    @Transactional(qualifier = DemoDatabase.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = DemoDatabase.class)
     public List<BDUser> getUsersByName(String name) {
 //        return EntityHelper.entityToBd(userDao.findByName(name));
         return EntityHelper.entityToBd(userEntityDao.getUsersByName(name));

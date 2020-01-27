@@ -6,6 +6,7 @@ import com.example.demo.helper.EntityHelper;
 import com.example.jpademo2.dao.impl.ProductEntityDao;
 import com.example.jpademo2.dao.repositories.ProductRepositoryDao;
 import com.example.jpademo2.repositories.ProductRepository;
+import org.apache.deltaspike.jpa.api.entitymanager.EntityManagerConfig;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,8 @@ public class ProductService {
     @Inject
     private ProductRepositoryDao productRepositoryDao;
 
-    @Transactional(qualifier = Demo2Database.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = Demo2Database.class)
     public void addProduct(BDProduct bdProduct) {
         Random random = new Random();
         if (random.nextBoolean()) {
@@ -47,17 +49,20 @@ public class ProductService {
         logger.info(products.toString());
     }
 
-    @Transactional(qualifier = Demo2Database.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = Demo2Database.class)
     public List<BDProduct> getAllProducts() {
         return EntityHelper.entityToBdProducts(productEntityDao.findAll());
     }
 
-    @Transactional(qualifier = Demo2Database.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = Demo2Database.class)
     public List<BDProduct> getProductsByName(String name) {
         return EntityHelper.entityToBdProducts(productRepositoryDao.findByName(name));
     }
 
-    @Transactional(qualifier = Demo2Database.class)
+    @Transactional
+    @EntityManagerConfig(qualifier = Demo2Database.class)
     public List<BDProduct> getProductsCheaperThen(BigDecimal price) {
         return EntityHelper.entityToBdProducts(productRepositoryDao.getProductsCheaperThen(price));
     }
