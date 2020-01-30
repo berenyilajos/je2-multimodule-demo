@@ -3,8 +3,8 @@ package com.example.jpademo2.dao.repositories;
 import com.example.jpademo2.entity.Product;
 import com.example.jpademo2.transactions.Demo2EntityManagerResolver;
 import org.apache.deltaspike.data.api.AbstractEntityRepository;
-import org.apache.deltaspike.data.api.EntityManagerConfig;
 import org.apache.deltaspike.data.api.Repository;
+import org.apache.deltaspike.jpa.api.entitymanager.EntityManagerConfig;
 
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;

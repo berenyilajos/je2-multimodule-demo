@@ -2,9 +2,9 @@ package com.example.jpademo.dao.repositories;
 
 import com.example.jpademo.entity.User;
 import com.example.jpademo.transactions.DemoEntityManagerResolver;
-import org.apache.deltaspike.data.api.EntityManagerConfig;
 import org.apache.deltaspike.data.api.AbstractEntityRepository;
 import org.apache.deltaspike.data.api.Repository;
+import org.apache.deltaspike.jpa.api.entitymanager.EntityManagerConfig;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
