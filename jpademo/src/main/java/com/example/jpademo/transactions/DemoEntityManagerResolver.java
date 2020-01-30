@@ -1,7 +1,7 @@
 package com.example.jpademo.transactions;
 
 import com.example.jpademo.dao.qualifier.DemoDatabase;
-import org.apache.deltaspike.data.api.EntityManagerResolver;
+import org.apache.deltaspike.jpa.api.entitymanager.EntityManagerResolver;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
