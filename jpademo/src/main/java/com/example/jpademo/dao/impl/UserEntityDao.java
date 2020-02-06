@@ -20,7 +20,8 @@ public class UserEntityDao extends BaseEntityDao<User, Long> {
 
     public List<User> getUsersByName(String name) {
         String queryText = "SELECT u FROM User u WHERE u.name = :name";
-        TypedQuery<User> query = getEntityManager().createQuery(queryText, User.class);
+//        TypedQuery<User> query = getEntityManager().createQuery(queryText, User.class);
+        TypedQuery<User> query = typedQuery(queryText);
         query.setParameter("name", name);
 
         return query.getResultList();
