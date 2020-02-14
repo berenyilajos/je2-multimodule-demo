@@ -30,8 +30,9 @@ public abstract class BaseEntityDao<E, ID> {
         update.accept(entity);
     }
 
-    public void save(E entity) {
+    public E save(E entity) {
         entityManager.persist(entity);
+        return entity;
     }
 
     public void removeById(ID id) {
