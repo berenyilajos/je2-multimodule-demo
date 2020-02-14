@@ -44,11 +44,11 @@ public class UserService {
     @Transactional
     @EntityManagerConfig(qualifier = DemoDatabase.class)
     public void addUser(BDUser bdUser){
-        User user;
+        User user = EntityHelper.bdToEntity(bdUser);
         if (new Random().nextBoolean()) {
-            user = userRepositoryDao.save(EntityHelper.bdToEntity(bdUser));
+            userRepositoryDao.save(user);
         } else {
-            user = userEntityDao.save(EntityHelper.bdToEntity(bdUser));
+            userEntityDao.save(user);
         }
         try {
             Consumer<User> cons = u -> {
